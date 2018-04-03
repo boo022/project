@@ -1,0 +1,105 @@
+/* BASIC css start */
+#side.fixed {position:fixed; top:-300px; left:0px; width:340px; z-index:2;} /* ¸Þ´º°íÁ¤ */
+
+#side { position:absolute;  top:0; left:0px;  width:340px; min-height:1500px;  height:100%; border-right:1px solid #f0f0f0; z-index:2;  background:#f0f0f0; }
+#side_box  { width:280px;padding-top:60px; margin:0 auto; font-family: 'Lato', sans-serif;}
+#side_box .logo { margin-bottom:20px; position:relative;width:280px;height:50px;font-size:0;line-height:0; }
+
+
+
+#side_box .scroll { }
+#side_box .scroll img {margin:34px 0 0 0;transition:1s;}
+
+#side_box .book { }
+#side_box .book a  {  color:#fff; font-family: 'Lato', sans-serif; background:#333;border:1px solid #333; padding:5px;  font-weight:bold;letter-spacing:1px;   }
+#side_box .book a:hover {  color:#000; font-family: 'Lato', sans-serif; background:#fff;border:1px solid #fff; padding:5px;  font-weight:bold;letter-spacing:1px;   }
+
+
+#side_box .left_line { height:1px; background:#F6F6F6; margin:40px 0 20px 0;}
+
+/* ·Î±×ÀÎ */
+
+#side_box .left_mem { margin-bottom:10px; padding-bottom:35px;  border:0px solid #5D5D5D} 
+#side_box .left_mem li { float:left; line-height:25px; background: url(/design/d4-0274/wizdesign/m-line.png) no-repeat 100% 55%; background-size: 1px 10px; padding:10px;  }
+#side_box .left_mem li:first-child {  padding-left:0px; }
+#side_box .left_mem li a { color:#5D5D5D;  box-sizing:border-box;  text-align:left; font-family: 'Lato', sans-serif; font-size:11px;  font-weight:400; }
+#side_box .left_mem li:last-child { background: none;  }
+#side_box .left_mem li a:hover { color:#5D5D5D; }
+#side_box .cart { margin-bottom:45px; }
+#side_box .cart a {color:#5D5D5D;  font-family: 'Lato', sans-serif; font-size:11px;  font-weight:400; }
+
+
+
+
+.left_title1 { clear:both; line-height:30px; padding-top:15px; margin-bottom:5px;  margin-top:5px; border-top:0px solid #5D5D5D; font-family:'Montserrat', sans-serif; font-size:12px; font-weight:700; letter-spacing:0.5px; color:#5D5D5D; }
+.left_title1 span { display:inline-block; line-height:30px; }
+
+
+.left_title { clear:both; line-height:30px; padding-top:15px; margin-bottom:5px;  margin-top:5px; border-top:1px solid #5D5D5D; font-family:'Montserrat', sans-serif; font-size:12px; font-weight:700; letter-spacing:0.5px; color:#5D5D5D; }
+.left_title span { display:inline-block; line-height:30px; }
+
+/* °Ë»ö */
+
+.search {width:280px; height:25px; text-align:right; border-bottom:1px solid #5D5D5D;}
+.search span input { height:25px;line-height:25px;  color:#5D5D5D; font-size:12px;  font-family:'Nanum Gothic', "arial", µ¸¿ò; border:0; padding:0; width:260px; float:left;   background:none;}
+.search a {vertical-align:top ;}
+.search  input { border:none; height:0px; line-height:20px;}
+.search  .btn-sch { width:20px;height:20px; }
+
+
+/* Ä«Å×°í¸® */
+
+.sidemenu { }
+.sidemenu li { width:93px;  float:left; }
+.sidemenu li a {  display:block; line-height:25px;  font-family: 'Lato', sans-serif; font-size:11px; font-weight:400; color:#5D5D5D;   }
+.sidemenu li a:hover { color:#5D5D5D ; font-family:'Nanum Gothic', µ¸¿ò; font-size:11px;}
+.sidemenu  .fly a{ color:#4374D9 }
+.sidemenu  .red a{ color:#CC3D3D }
+
+.sidemenu  .fly a:hover { color:#4374D9 }
+.sidemenu  .red a:hover  { color:#CC3D3D }
+
+/* °Ô½ÃÆÇ */
+
+.com_menu { }
+.com_menu li { width:93px;  float:left; }
+.com_menu li a { line-height:25px; font-family:'Lato', sans-serif; font-size:11px; font-weight:400;  color:#5D5D5D;  }
+.com_menu li a:hover { color:#5D5D5D ; font-family:'Nanum Gothic', µ¸¿ò; font-size:11px;}
+
+/* °øÁö»çÇ× */
+
+.left_notice { width:100%; line-height:20px; border-bottom:0px solid #e5e5e5; text-align:left; margin-bottom:20px;}
+.left_notice li { border-bottom:0px solid #5D5D5D;}
+.left_notice li a { line-height:20px; font-family:'Nanum Gothic', µ¸¿ò; font-size:11px; color:#5D5D5D; font-weight:normal!important;   }
+.left_notice li a:hover { color:#5D5D5D ; text-decoration:underline}
+
+
+
+/* °í°´¼¾ÅÍ */
+
+.left_info { margin-bottom:20px; }
+.left_info .tel { font-size:14px; font-weight:bold; color:#5D5D5D;  font-family:'Lato', sans-serif; }
+.left_info .time { font-family:'Lato', sans-serif; font-size:11px; font-weight:400; color:#5D5D5D; }
+
+
+/* ½ºÅ©·¦ */
+.sns span { padding-right:5px; }
+.sns img { width:35px; padding-bottom:10px;}
+.sns img:hover {filter:alpha(opacity=50); opacity:0.5; }
+
+
+
+/* ÀÎ½ºÅ¸ */
+
+.ins { margin-bottom:20px; color:#5D5D5D; }
+
+
+/* ÀºÇà */
+.left_bank { font-family:'Nanum Gothic', µ¸¿ò; font-size:11px; color:#5D5D5D;  }
+
+
+.clear { clear:both;   }
+
+
+/* BASIC css end */
+

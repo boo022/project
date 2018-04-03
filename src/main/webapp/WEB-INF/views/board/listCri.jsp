@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header_test.jsp"%>
 
 <!-- Main content -->
 <section class="content">
@@ -156,4 +156,4 @@
 			}); 
 </script>
 
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer_test.jsp"%>

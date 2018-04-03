@@ -1,0 +1,8 @@
+/* BASIC css start */
+#todayWrap { z-index: 2; }
+#todayWrap .cont { padding-bottom: 8px; border-left: 1px solid #e1e1e1; border-right: 1px solid #e1e1e1; background-color: #fcfcfc; }
+#todayWrap .cont li a { display: inline-block; width: 52px; height: 52px; }
+#todayWrap .cont li img { width: 100%; height: 100%; border: 1px solid #e1e1e1; }
+#todayWrap .cont li { padding: 10px 5px 0; }
+/* BASIC css end */
+

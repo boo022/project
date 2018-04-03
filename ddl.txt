@@ -1,0 +1,338 @@
+-- 회원테이블
+CREATE TABLE tb_member (
+	memberSeqNo INTEGER      NOT NULL, -- 시퀀스번호
+	id          VARCHAR(10)  NOT NULL, -- 아이디
+	pw          VARCHAR(50)  NOT NULL, -- 패스워드
+	name        varchar(10)  NOT NULL, -- 이름
+	mobile      VARCHAR(20)  NOT NULL, -- 폰번호
+	email       VARCHAR(50)  NOT NULL, -- 이메일
+	addr1       VARCHAR(10)  NOT NULL, -- 우편번호
+	addr2       VARCHAR(100) NOT NULL, -- 기본주소
+	addr3       VARCHAR(100) NOT NULL, -- 상세주소
+	birthday    VARCHAR(10)  NULL,     -- 생년월일
+	sex         VARCHAR(5)   NULL,     -- 성별
+	regDate     TIMESTAMP    NOT NULL, -- 등록일
+	modDate     TIMESTAMP    NOT NULL  -- 수정일
+);
+
+-- 회원테이블 기본키
+CREATE UNIQUE INDEX PK_tb_member
+	ON tb_member ( -- 회원테이블
+		memberSeqNo ASC -- 시퀀스번호
+	);
+
+-- 회원테이블
+ALTER TABLE tb_member
+	ADD
+		CONSTRAINT PK_tb_member -- 회원테이블 기본키
+		PRIMARY KEY (
+			memberSeqNo -- 시퀀스번호
+		);
+
+-- 상품테이블
+CREATE TABLE tb_product (
+	productSeqNo INTEGER      NOT NULL, -- 시퀀스
+	category     VARCHAR(10)  NOT NULL, -- 대분류
+	category2    VARCHAR(10)  NOT NULL, -- 소분류
+	name         VARCHAR(50)  NOT NULL, -- 상품명
+	content      BLOB         NOT NULL, -- 디테일설명
+	preContent   VARCHAR(200) NOT NULL, -- 대표설명
+	image        VARCHAR(100) NOT NULL, -- 대표이미지
+	price        INTEGER      NOT NULL, -- 가격
+	regDate      TIMESTAMP    NOT NULL, -- 등록일
+	modDate      TIMESTAMP    NOT NULL  -- 수정일
+);
+
+-- 상품테이블 기본키
+CREATE UNIQUE INDEX PK_tb_product
+	ON tb_product ( -- 상품테이블
+		productSeqNo ASC -- 시퀀스
+	);
+
+-- 상품테이블
+ALTER TABLE tb_product
+	ADD
+		CONSTRAINT PK_tb_product -- 상품테이블 기본키
+		PRIMARY KEY (
+			productSeqNo -- 시퀀스
+		);
+
+-- 상품상세테이블
+CREATE TABLE tb_productDetail (
+	productDetailSeqNo INTEGER     NOT NULL, -- 상품상세시퀀스
+	productSeqNo       INTEGER     NOT NULL, -- 상품테이블시퀀스
+	size               VARCHAR(3)  NOT NULL, -- 상품사이즈
+	color              VARCHAR(20) NOT NULL  -- 상품색상
+);
+
+-- 상품상세테이블 기본키
+CREATE UNIQUE INDEX PK_tb_productDetail
+	ON tb_productDetail ( -- 상품상세테이블
+		productDetailSeqNo ASC -- 상품상세시퀀스
+	);
+
+-- 상품상세테이블
+ALTER TABLE tb_productDetail
+	ADD
+		CONSTRAINT PK_tb_productDetail -- 상품상세테이블 기본키
+		PRIMARY KEY (
+			productDetailSeqNo -- 상품상세시퀀스
+		);
+
+-- 리뷰테이블
+CREATE TABLE tb_review (
+	reviewSeqNo  INTEGER      NOT NULL, -- 리뷰시퀀스
+	memberSeqNo  INTEGER      NOT NULL, -- 회원시퀀스
+	productSeqNo INTEGER      NOT NULL, -- 상품시퀀스
+	score        INTEGER      NULL,     -- 평점
+	content      VARCHAR(500) NOT NULL, -- 리뷰내용
+	regDate      TIMESTAMP    NOT NULL, -- 등록일
+	modDate      TIMESTAMP    NOT NULL  -- 수정일
+);
+
+-- 리뷰테이블 기본키
+CREATE UNIQUE INDEX PK_tb_review
+	ON tb_review ( -- 리뷰테이블
+		reviewSeqNo ASC -- 리뷰시퀀스
+	);
+
+-- 리뷰테이블
+ALTER TABLE tb_review
+	ADD
+		CONSTRAINT PK_tb_review -- 리뷰테이블 기본키
+		PRIMARY KEY (
+			reviewSeqNo -- 리뷰시퀀스
+		);
+
+-- 리뷰이미지테이블
+CREATE TABLE tb_reviewPhoto (
+	reviewPhotoSeqNo INTEGER      NOT NULL, -- 리뷰이미지시퀀스
+	reviewSeqNo      INTEGER      NOT NULL, -- 리뷰시퀀스
+	image            VARCHAR(100) NOT NULL  -- 이미지경로
+);
+
+-- 리뷰이미지테이블 기본키
+CREATE UNIQUE INDEX PK_tb_reviewPhoto
+	ON tb_reviewPhoto ( -- 리뷰이미지테이블
+		reviewPhotoSeqNo ASC -- 리뷰이미지시퀀스
+	);
+
+-- 리뷰이미지테이블
+ALTER TABLE tb_reviewPhoto
+	ADD
+		CONSTRAINT PK_tb_reviewPhoto -- 리뷰이미지테이블 기본키
+		PRIMARY KEY (
+			reviewPhotoSeqNo -- 리뷰이미지시퀀스
+		);
+
+-- 주문테이블
+CREATE TABLE tb_order (
+	orderSeqNo  INTEGER     NOT NULL, -- 주문시퀀스
+	memberSeqNo INTEGER     NOT NULL, -- 회원시퀀스
+	orderDate   DATE        NOT NULL, -- 주문일자
+	status      VARCHAR(10) NOT NULL, -- 주문상태
+	regDate     TIMESTAMP   NOT NULL, -- 등록일
+	modDate     TIMESTAMP   NOT NULL  -- 수정일
+);
+
+-- 주문테이블 기본키
+CREATE UNIQUE INDEX PK_tb_order
+	ON tb_order ( -- 주문테이블
+		orderSeqNo ASC -- 주문시퀀스
+	);
+
+-- 주문테이블
+ALTER TABLE tb_order
+	ADD
+		CONSTRAINT PK_tb_order -- 주문테이블 기본키
+		PRIMARY KEY (
+			orderSeqNo -- 주문시퀀스
+		);
+
+-- 주문상세테이블
+CREATE TABLE tb_orderDetail (
+	orderDetailSeqNo   INTEGER NOT NULL, -- 주문상세시퀀스
+	productDetailSeqNo INTEGER NOT NULL, -- 상품상세시퀀스
+	orderSeqNo         INTEGER NOT NULL  -- 주문시퀀스
+);
+
+-- 주문상세테이블 기본키
+CREATE UNIQUE INDEX PK_tb_orderDetail
+	ON tb_orderDetail ( -- 주문상세테이블
+		orderDetailSeqNo ASC -- 주문상세시퀀스
+	);
+
+-- 주문상세테이블
+ALTER TABLE tb_orderDetail
+	ADD
+		CONSTRAINT PK_tb_orderDetail -- 주문상세테이블 기본키
+		PRIMARY KEY (
+			orderDetailSeqNo -- 주문상세시퀀스
+		);
+
+-- 장바구니테이블
+CREATE TABLE tb_cart (
+	cartSeqNo          INTEGER   NOT NULL, -- 장바구니시퀀스
+	memberSeqNo        INTEGER   NOT NULL, -- 회원시퀀스
+	productDetailSeqNo INTEGER   NOT NULL, -- 상품상세시퀀스
+	quantity           INTEGER   NOT NULL, -- 수량
+	regDate            TIMESTAMP NOT NULL, -- 등록일
+	modDate            TIMESTAMP NOT NULL  -- 수정일
+);
+
+-- 장바구니테이블 기본키
+CREATE UNIQUE INDEX PK_tb_cart
+	ON tb_cart ( -- 장바구니테이블
+		cartSeqNo ASC -- 장바구니시퀀스
+	);
+
+-- 장바구니테이블
+ALTER TABLE tb_cart
+	ADD
+		CONSTRAINT PK_tb_cart -- 장바구니테이블 기본키
+		PRIMARY KEY (
+			cartSeqNo -- 장바구니시퀀스
+		);
+
+-- 위시리스트테이블
+CREATE TABLE tb_wishList (
+	wishListSeqNo INTEGER   NOT NULL, -- 위시리스트시퀀스
+	productSeqNo  INTEGER   NOT NULL, -- 상품시퀀스
+	memberSeqNo   INTEGER   NULL,     -- 회원시퀀스
+	regDate       TIMESTAMP NOT NULL  -- 등록일
+);
+
+-- 위시리스트테이블 기본키
+CREATE UNIQUE INDEX PK_tb_wishList
+	ON tb_wishList ( -- 위시리스트테이블
+		wishListSeqNo ASC -- 위시리스트시퀀스
+	);
+
+-- 위시리스트테이블
+ALTER TABLE tb_wishList
+	ADD
+		CONSTRAINT PK_tb_wishList -- 위시리스트테이블 기본키
+		PRIMARY KEY (
+			wishListSeqNo -- 위시리스트시퀀스
+		);
+
+-- 상품상세테이블
+ALTER TABLE tb_productDetail
+	ADD
+		CONSTRAINT FK_tb_product_TO_tb_productDetail -- 상품테이블 -> 상품상세테이블
+		FOREIGN KEY (
+			productSeqNo -- 상품테이블시퀀스
+		)
+		REFERENCES tb_product ( -- 상품테이블
+			productSeqNo -- 시퀀스
+		);
+
+-- 리뷰테이블
+ALTER TABLE tb_review
+	ADD
+		CONSTRAINT FK_tb_product_TO_tb_review -- 상품테이블 -> 리뷰테이블
+		FOREIGN KEY (
+			productSeqNo -- 상품시퀀스
+		)
+		REFERENCES tb_product ( -- 상품테이블
+			productSeqNo -- 시퀀스
+		);
+
+-- 리뷰테이블
+ALTER TABLE tb_review
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_review -- 회원테이블 -> 리뷰테이블
+		FOREIGN KEY (
+			memberSeqNo -- 회원시퀀스
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		);
+
+-- 리뷰이미지테이블
+ALTER TABLE tb_reviewPhoto
+	ADD
+		CONSTRAINT FK_tb_review_TO_tb_reviewPhoto -- 리뷰테이블 -> 리뷰이미지테이블
+		FOREIGN KEY (
+			reviewSeqNo -- 리뷰시퀀스
+		)
+		REFERENCES tb_review ( -- 리뷰테이블
+			reviewSeqNo -- 리뷰시퀀스
+		);
+
+-- 주문테이블
+ALTER TABLE tb_order
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_order -- 회원테이블 -> 주문테이블
+		FOREIGN KEY (
+			memberSeqNo -- 회원시퀀스
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		);
+
+-- 주문상세테이블
+ALTER TABLE tb_orderDetail
+	ADD
+		CONSTRAINT FK_tb_order_TO_tb_orderDetail -- 주문테이블 -> 주문상세테이블
+		FOREIGN KEY (
+			orderSeqNo -- 주문시퀀스
+		)
+		REFERENCES tb_order ( -- 주문테이블
+			orderSeqNo -- 주문시퀀스
+		);
+
+-- 주문상세테이블
+ALTER TABLE tb_orderDetail
+	ADD
+		CONSTRAINT FK_tb_productDetail_TO_tb_orderDetail -- 상품상세테이블 -> 주문상세테이블
+		FOREIGN KEY (
+			productDetailSeqNo -- 상품상세시퀀스
+		)
+		REFERENCES tb_productDetail ( -- 상품상세테이블
+			productDetailSeqNo -- 상품상세시퀀스
+		);
+
+-- 장바구니테이블
+ALTER TABLE tb_cart
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_cart -- 회원테이블 -> 장바구니테이블
+		FOREIGN KEY (
+			memberSeqNo -- 회원시퀀스
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		);
+
+-- 장바구니테이블
+ALTER TABLE tb_cart
+	ADD
+		CONSTRAINT FK_tb_productDetail_TO_tb_cart -- 상품상세테이블 -> 장바구니테이블
+		FOREIGN KEY (
+			productDetailSeqNo -- 상품상세시퀀스
+		)
+		REFERENCES tb_productDetail ( -- 상품상세테이블
+			productDetailSeqNo -- 상품상세시퀀스
+		);
+
+-- 위시리스트테이블
+ALTER TABLE tb_wishList
+	ADD
+		CONSTRAINT FK_tb_product_TO_tb_wishList -- 상품테이블 -> 위시리스트테이블
+		FOREIGN KEY (
+			productSeqNo -- 상품시퀀스
+		)
+		REFERENCES tb_product ( -- 상품테이블
+			productSeqNo -- 시퀀스
+		);
+
+-- 위시리스트테이블
+ALTER TABLE tb_wishList
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_wishList -- 회원테이블 -> 위시리스트테이블
+		FOREIGN KEY (
+			memberSeqNo -- 회원시퀀스
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		);

@@ -1,0 +1,97 @@
+/* BASIC css start */
+#contentWrap { position: relative; position: relative; width:100%;  } /* 지우시 마세요 */
+#content { padding-top:0px }
+
+#m-big { margin:0 auto; width:1200px; border:0px solid #fff; padding-top:30px; }
+
+.main_visual{ height:600px; }
+.main_visual li{overflow:hidden;height:600px;}
+.main_visual img{ display:block;position:absolute;top:0;max-width:none; ;}
+#visual .bx-wrapper .bx-pager {z-index:90;position:absolute;left:0;bottom:0px;}
+#visual .bx-wrapper .bx-pager .bx-pager-item,#visual .bx-wrapper .bx-controls-auto .bx-controls-auto-item{display: inline-block;*zoom:1;*display: inline;}
+#visual .bx-wrapper .bx-pager.bx-default-pager a{border:1px solid #999;background:none;width:9px;height:9px;margin:0 5px;}
+#visual .bx-wrapper .bx-pager.bx-default-pager a:hover,#visual .bx-wrapper .bx-pager.bx-default-pager a.active{background:#333;border:1px solid #333;}
+
+
+/* 페이스북배너 */
+
+.face_box  {margin: 0 auto;text-align: center;}
+.face_box  li {display: inline-block; padding:0px 2px 5px}
+
+
+
+/* 좌우롤링 */
+#maintop { position:relative; width:99.5%;  margin:0 auto; }
+#maintop .roll_wrap {width:100% !important;  }
+#maintop .roll_wrap img {width:100% !important; min-width:1200px; }
+#maintop .btn {position:absolute; top:45%; z-index:99999; cursor:pointer; }
+#maintop .btn.arrow_prev {left:0px; }
+#maintop .btn.arrow_next {right:0px;}
+
+
+
+
+/* 메인 */
+.titbox1 { clear:both; width:1200px; line-height:50px; border-bottom:1px solid #EFEFEF ; text-align:center; font-family: 'Open Sans', 'Nanum Gothic', sans-serif; font-weight:400; letter-spacing:1px; font-size:15px; color:#000; padding-top:60px;  padding-bottom:0px; margin-bottom:40px; }
+.titbox1 div { position:relative; display:inline-block; *display:inline; *zoom:1; line-height:50px; border-bottom:2px solid #000; }
+
+
+#main { position: relative; width:1200px; margin:0 auto; clear:both;}
+
+
+
+
+
+/* 특별상품진열 */
+
+.item-list5 { zoom: 1; overflow: hidden; clear:both; }
+.item-list5:after { content: ""; clear: both; display: block; }
+
+.item-list5 .item { float: left; width: 200px; margin-top: 0px; margin-bottom: 5px; text-align: center; font-weight:normal; position:relative; }
+
+.item-list5 .item .thumb { margin: 0 auto; width:195px ;  height:100%; ; background:#000000; cursor:pointer}
+.item-list5 .item .thumb img {width:195px ;  height: auto; }
+.item-list5 .item .thumb .boxhover  { position:absolute; top:0px; left:0px;  width:195px ; height:100%; z-index:2; color:#000; text-align:center; display:none;  }
+.item-list5 .item .thumb .boxhover li  {width:195px; height:237px ; padding:0 20px; display:table-cell; vertical-align: middle;}
+
+.item-list5 .boxhover * {color:#fff}
+
+
+.item-list5 .item .info { width: 195px ; height:100%; margin:0 auto; text-align: center;  }
+.item-list5 .item .info li p {margin:5px auto;  }
+.item-list5 .item .info .name { font-weight:bold; margin-top: 10px; border-bottom:1px #ddd solid; font-size:11px; font-family:나눔고딕,'Nanum Gothic',"맑은 고딕",'Malgun Gothic',arial,"돋움",Dutum; color: #fff;padding:0 0 0px; }
+.item-list5 .item .info .subname { color: #fff; font-size:11px; font-family: "돋움",Dutum;   }
+
+
+
+
+
+#m-slide {width:100%; position:relative; overflow-x:hidden; margin-top:50px;  }
+#m-slide #main_slides {width:1200px; height:400px; margin:0 auto; padding:0; vertical-align:top}
+#m-slide #main_slides .slides_container {margin:0; padding:0}
+#m-slide #main_slides .slides_container li { height:400px; padding:0; margin:0}
+#m-slide #main_slides .control {width:1200px; margin:0 auto; padding:0; position:relative}
+#m-slide #main_slides .control li {margin:0; padding:0; list-style:none; z-index:10; position:absolute; top:-222px;  }
+#m-slide #main_slides .control li img {width:40px; height:70px}
+#m-slide #main_slides .control li.pPrev{left:0}
+#m-slide #main_slides .control li.pNext{right:0}
+#m-slide #main_slides ul.pagination {display:none}
+#m-slide #main_slides ul.pagination li {}
+#m-slide #main_slides ul.pagination li a {}
+#m-slide #main_slides ul.pagination li a.active, 
+#m-slide #main_slides ul.pagination li a:hover {}
+#m-slide #main_slides ul.pagination li.current a {}
+#m-slide .left_filter {width:1200px; height:400px; position:absolute; top:0px; left:50%; margin-left:-1800px;; background:#000000; z-index:11} /* 마진은 보이는 이미지넓이의 3배수 */
+#m-slide .right_filter {width:1200px; height:400px; position:absolute; top:0px; left:50%; margin-left:600px;; background:#000000; z-index:11} /* 마진은 보이는 이니미넓이의 2분의1 수 */
+/* BASIC css end */
+
+
+/* 중앙배너 */
+
+.mbanner{ width:1200px; height:400px; padding:50px 0; margin:0 auto;}
+.mbanner .m_left { float:left;}
+.mbanner .m_right { float:right;}
+
+
+
+/* BASIC css end */
