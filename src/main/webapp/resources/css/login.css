@@ -1,0 +1,41 @@
+/* BASIC css start */
+#loginWrap { margin:100px auto 200px; }
+
+#loginWrap .loc-navi { margin-top: 40px; padding-bottom: 5px; border-bottom: 1px solid #e5e5e5; }
+#loginWrap .page-body { width: 700px; margin-top: 55px; margin-bottom: 100px; margin-left: auto; margin-right: auto; border: 0px solid #e5e5e5;  }
+#loginWrap .mlog-sign { width: 700px; min-height: 206px; _height; 206px;  position: relative; }
+#loginWrap .mlog-sign .mlog,
+#loginWrap .mlog-sign .sign { float: left; }
+/* member login */
+
+
+
+#loginWrap .mlog-sign .mlog { border-right: 1px solid #e5e5e5;   position: relative; width: 350px; height: 180px;  }
+
+#loginWrap .mlog-sign .frm-list { position: absolute; left: 0px; top: 0px; width: 350px; color: #3F3F3F; text-decoration:none; font-size:8pt;font-family: 'nanumgothic',돋움;  }
+#loginWrap .mlog-sign .frm-list li,
+
+#loginWrap .mlog-sign .frm-list .id {  height:32px; overflow:hidden;display:block;width:300px;margin:0 0 2px;border:1px solid #d9d9d9;border-radius:2px; line-height:32px;padding:0 0 0 8px;}
+#loginWrap .mlog-sign .frm-list .pwd { height:32px; overflow:hidden;display:block;width:300px;margin:0 0 2px; border:1px solid #d9d9d9;border-radius:2px;line-height:32px;padding:0 0 0 8px;}
+#loginWrap .mlog-sign .frm-list input {width:240px;height:23px;padding:2px 0 2px 0;line-height:23px; border:1px solid #d9d9d9;  float: right; border:none;}
+
+#loginWrap .mlog-sign .frm-list li label,
+#loginWrap .mlog-sign .frm-list li .txt-frm { float: left; }
+#loginWrap .mlog-sign .frm-list li { width: 100%; margin-bottom: 5px; }
+#loginWrap .mlog-sign .frm-list li label { width: 300px; padding-top: 2px;}
+#loginWrap .mlog-sign .frm-list li .txt-frm { width: 200px; height: 19px; padding: 2px 0 0 2px; border: 0; background-color: #eaeaea; }
+#loginWrap .mlog-sign .btn-mlog { position: absolute; left: 316px; top: 110px; }
+#loginWrap .mlog-sign .se-log { position: absolute; left: 0px; top: 80px;  color: #3F3F3F; text-decoration:none; font-size:8pt;font-family: 'nanumgothic',돋움;   }
+
+
+
+
+/* sign */
+#loginWrap .mlog-sign .sign { position:absolute; left: 370px; top: 0px;  width: 300px;  text-align: center; border: 0px solid #000;   }
+#loginWrap .mlog-sign .sign .msg { text-align:left;padding:5px 0; line-height:14px; color: #3F3F3F; text-decoration:none; font-size:8pt;font-family: 'nanumgothic',돋움;  }
+#loginWrap .mlog-sign .sign .btns { width: 103px; margin-left: auto; margin-right: auto; }
+#loginWrap .mlog-sign .sign .btns a { display: block; margin-top: 8px; }
+
+
+/* BASIC css end */
+

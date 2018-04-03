@@ -26,10 +26,10 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET(BoardVO board,Model model) throws Exception{
 		logger.info("register get.....");
-	}
+	}*/
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception{
