@@ -70,7 +70,7 @@
 
 
 <div class="logo">
-<a href="/index.html"><img src="/resources/image/okunlogo5.png" style="opacity: 1;" 
+<a href="/"><img src="/resources/image/okunlogo5.png" style="opacity: 1;" 
 onmouseover="this.style.opacity=0.5; this.filters.alpha.opacity=50;" 
 onmouseout="this.style.opacity=1.0; this.filters.alpha.opacity=100;" alt="" title="" /></a>
 
@@ -81,7 +81,7 @@ onmouseout="this.style.opacity=1.0; this.filters.alpha.opacity=100;" alt="" titl
 
 <div class="left_mem btn_box">
 <ul>
-<li><a href="/shop/member.html?type=login">LOGIN</a></li>
+<li><a href="/login/login">LOGIN</a></li>
 <li><a href="/shop/idinfo.html">JOIN <b>+2000</b></a></li>
 
 <li><a href="/shop/confirm_login.html?type=myorder">ORDER</a></li>

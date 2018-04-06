@@ -336,3 +336,186 @@ ALTER TABLE tb_wishList
 		REFERENCES tb_member ( -- 회원테이블
 			memberSeqNo -- 시퀀스번호
 		);
+
+--18.04.05 회원테이블 수정 및 토큰테이블 추가
+--회원테이블(tb_member)에 회원가입종류 및 탈퇴회원여부 컬럼 추가
+
+ALTER TABLE `shopping`.`tb_member` 
+ADD COLUMN `memberType` VARCHAR(5) NOT NULL DEFAULT 'G' 
+COMMENT '일반회원가입 :G 카카오회원가입 :K 네이버 회원가입 :N' AFTER `pw`;
+
+ALTER TABLE `shopping`.`tb_member` 
+ADD COLUMN `status` VARCHAR(5) NOT NULL 
+COMMENT 'ACT : 정상회원 DEL : 탈퇴회원 ' AFTER `sex`;
+
+-- 토큰테이블
+CREATE TABLE tb_memberToken (
+	memberSeqNo INTEGER     NOT NULL, -- 시퀀스번호
+	accessToken VARCHAR(50) NOT NULL, -- 토큰
+	regDate     TIMESTAMP   NOT NULL, -- 등록일
+	modDate     TIMESTAMP   NOT NULL  -- 수정일
+);
+
+-- 토큰테이블 기본키
+CREATE UNIQUE INDEX PK_tb_memberToken
+	ON tb_memberToken ( -- 토큰테이블
+		memberSeqNo ASC -- 시퀀스번호
+	);
+
+-- 토큰테이블
+ALTER TABLE tb_memberToken
+	ADD
+		CONSTRAINT PK_tb_memberToken -- 토큰테이블 기본키
+		PRIMARY KEY (
+			memberSeqNo -- 시퀀스번호
+		);
+
+-- 토큰테이블
+ALTER TABLE tb_memberToken
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_memberToken -- 회원테이블 -> 토큰테이블
+		FOREIGN KEY (
+			memberSeqNo -- 시퀀스번호
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+
+-- AUTO INCREASE 추가
+ALTER TABLE tb_cart
+    DROP FOREIGN KEY FK_tb_member_TO_tb_cart;
+    
+ALTER TABLE tb_wishlist
+    DROP FOREIGN KEY FK_tb_member_TO_tb_wishlist;
+    
+ALTER TABLE tb_membertoken
+    DROP FOREIGN KEY FK_tb_member_TO_tb_membertoken;
+    
+ALTER TABLE tb_order
+    DROP FOREIGN KEY FK_tb_member_TO_tb_order;
+    
+ALTER TABLE tb_review
+    DROP FOREIGN KEY FK_tb_member_TO_tb_review;
+    
+ALTER TABLE tb_member MODIFY memberSeqNo INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE tb_orderdetail
+    DROP FOREIGN KEY FK_tb_order_TO_tb_orderDetail;
+    
+ALTER TABLE tb_order MODIFY orderSeqNo INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE tb_orderDetail MODIFY orderDetailSeqNo INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE tb_reviewphoto
+    DROP FOREIGN KEY FK_tb_review_TO_tb_reviewPhoto;
+ALTER TABLE tb_review MODIFY reviewSeqNo INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE tb_reviewPhoto MODIFY reviewPhotoSeqNo INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE tb_cart MODIFY cartSeqNo INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE tb_wishlist MODIFY wishListSeqNo INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE tb_productdetail
+    DROP FOREIGN KEY FK_tb_product_TO_tb_productDetail;
+ALTER TABLE tb_review
+    DROP FOREIGN KEY FK_tb_product_TO_tb_review;    
+ALTER TABLE tb_product MODIFY productSeqNo INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE tb_orderdetail
+    DROP FOREIGN KEY FK_tb_productDetail_TO_tb_orderDetail;
+ALTER TABLE tb_cart
+    DROP FOREIGN KEY FK_tb_productDetail_TO_tb_cart;    
+ALTER TABLE tb_productdetail MODIFY productDetailSeqNo INT NOT NULL AUTO_INCREMENT;
+
+-- 제약조건 다시 추가
+
+-- 주문상세테이블
+ALTER TABLE tb_orderDetail
+	ADD
+		CONSTRAINT FK_tb_productDetail_TO_tb_orderDetail -- 상품상세테이블 -> 주문상세테이블
+		FOREIGN KEY (
+			productDetailSeqNo -- 상품상세시퀀스
+		)
+		REFERENCES tb_productDetail ( -- 상품상세테이블
+			productDetailSeqNo -- 상품상세시퀀스
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+        
+-- 주문테이블
+ALTER TABLE tb_order
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_order -- 회원테이블 -> 주문테이블
+		FOREIGN KEY (
+			memberSeqNo -- 회원시퀀스
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+        
+-- 리뷰이미지테이블
+ALTER TABLE tb_reviewPhoto
+	ADD
+		CONSTRAINT FK_tb_review_TO_tb_reviewPhoto -- 리뷰테이블 -> 리뷰이미지테이블
+		FOREIGN KEY (
+			reviewSeqNo -- 리뷰시퀀스
+		)
+		REFERENCES tb_review ( -- 리뷰테이블
+		reviewSeqNo -- 리뷰시퀀스
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+        
+-- 리뷰테이블
+ALTER TABLE tb_review
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_review -- 회원테이블 -> 리뷰테이블
+		FOREIGN KEY (
+			memberSeqNo -- 회원시퀀스
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+        
+-- 장바구니테이블
+ALTER TABLE tb_cart
+	ADD
+		CONSTRAINT FK_tb_productDetail_TO_tb_cart -- 상품상세테이블 -> 장바구니테이블
+		FOREIGN KEY (
+			productDetailSeqNo -- 상품상세시퀀스
+		)
+		REFERENCES tb_productDetail ( -- 상품상세테이블
+			productDetailSeqNo -- 상품상세시퀀스
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+
+-- 위시리스트테이블
+ALTER TABLE tb_wishList
+	ADD
+		CONSTRAINT FK_tb_member_TO_tb_wishList -- 회원테이블 -> 위시리스트테이블
+		FOREIGN KEY (
+			memberSeqNo -- 회원시퀀스
+		)
+		REFERENCES tb_member ( -- 회원테이블
+			memberSeqNo -- 시퀀스번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;        
+        
+-- 상품상세테이블
+ALTER TABLE tb_productDetail
+	ADD
+		CONSTRAINT FK_tb_product_TO_tb_productDetail -- 상품테이블 -> 상품상세테이블
+		FOREIGN KEY (
+		productSeqNo -- 상품테이블시퀀스
+		)
+		REFERENCES tb_product ( -- 상품테이블
+			productSeqNo -- 시퀀스
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+        
