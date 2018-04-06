@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.domain.BoardVO;
-import com.mycompany.domain.Criteria;
 import com.mycompany.domain.PageMaker;
 import com.mycompany.domain.SearchCriteria;
 import com.mycompany.service.BoardService;
