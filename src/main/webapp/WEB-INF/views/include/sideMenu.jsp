@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring"    uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<div id='blk_scroll_wings'><script type='text/javascript' src='/html/shopRbanner.html?param1=1' ></script></div>
-<div id='cherrypicker_scroll'></div>
-<div id="wrap">
-
-
 <link type="text/css" rel="stylesheet" href="/resources/css/header.css" />
 <link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"/>
 <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type="text/css"/>
@@ -18,7 +15,24 @@
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600" rel="stylesheet" type="text/css"/>
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
 <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,500,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css"/>
-<style type="text/css">
+<link type="text/css" rel="stylesheet" href="/resources/css/menu.css?t=201801171631">
+
+<script>
+function logout(){
+	$.ajax({
+		type:'post',
+		url:'/login/logoutAction',
+		headers: { 
+		      "Content-Type": "application/json",
+		      "X-HTTP-Method-Override": "POST" },
+		dataType:'text',
+		data: JSON.stringify({}),
+		success:function(result){
+			window.location.replace("http://localhost:8080");
+		}});
+}
+</script>
+<style>
 
 @font-face {
   font-family: 'Nanum Gothic';
@@ -30,20 +44,16 @@
        url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.woff) format('woff'),
        url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.ttf) format('truetype');
 }
-
 </style>
 
+<div id='blk_scroll_wings'><script type='text/javascript' src='/html/shopRbanner.html?param1=1' ></script></div>
+<div id='cherrypicker_scroll'></div>
 
+<div id="wrap">
 <div id="pagescroll">
     <p><a id="scrollup" href="#"><img src="http://www.okun.co.kr/design/hehekuk/wizdesign/up.png"/></a></p>
     <p><a id="scrolldown" href="#"><img src="http://www.okun.co.kr/design/hehekuk/wizdesign/btn_down.png"/></a></p>
 </div>
-
-
-
-
-
-
 
 <div id="header">
 
@@ -60,9 +70,6 @@
 
 <div id="contentWrapper">
 
-
-
-<link type="text/css" rel="stylesheet" href="/resources/css/menu.css?t=201801171631">
 <div id="side">
 <div id="side_box">
 
@@ -79,14 +86,25 @@ onmouseout="this.style.opacity=1.0; this.filters.alpha.opacity=100;" alt="" titl
 
 <div class="book"><a href="javascript:CreateBookmarkLink('http://www.okun.co.kr', '오쿤 [okun] :: Real Daily Look with okun');">+ BOOKMARK</a></div>
 
+<script>
+console.log('sessionInfo ? => ',"${sessionInfo.getId()}");
+</script>
+
 <div class="left_mem btn_box">
 <ul>
+<c:if test="${sessionInfo.getId()==null }">
 <li><a href="/login/login">LOGIN</a></li>
 <li><a href="/shop/idinfo.html">JOIN <b>+2000</b></a></li>
+<li><a href="/login/login">ORDER</a></li>
+<li><a href="/login/login">MYPAGE</a></li>
+</c:if>
 
-<li><a href="/shop/confirm_login.html?type=myorder">ORDER</a></li>
-<li><a href="/shop/member.html?type=mynewmain">MYPAGE</a></li>
-
+<c:if test="${sessionInfo.getId()!=null }">
+<li><a href="/" onclick="logout();">LOGOUT</a></li>
+<li><a href="#">MODIFY </a></li>
+<li><a href="#">ORDER</a></li>
+<li><a href="#">MYPAGE</a></li>
+</c:if>
 </ul>
 </div>
 
@@ -206,6 +224,7 @@ onmouseout="this.style.opacity=1.0; this.filters.alpha.opacity=100;" alt="" titl
 
 </div><!-- //side_box -->
 </div><!-- //side -->
+
 
 
 

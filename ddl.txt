@@ -518,4 +518,11 @@ ALTER TABLE tb_productDetail
 		)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
+
+
+2018.04.06 수정
+-- tb_memberToken accesstoken 컬럼 크기 수정
+ALTER TABLE `shopping`.`tb_membertoken` 
+CHANGE COLUMN `accessToken` `accessToken` VARCHAR(100) NOT NULL ;
+
         
